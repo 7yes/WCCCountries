@@ -15,20 +15,20 @@ The user is  able to scroll thru the entire list of countries.
 ·       Do not use Compose, I used XML
 ·       Do not use Dagger, I used Hilt
 
-MVVM
-Coroutines
-Activity
-Hilt
-XLM
-Livedata
-error handle
-data clases
-UI States
-loading
-clean code
-I changed the icon
-mapper
-layers
+I used the followings:
+*   MVVM
+*   Coroutines
+*   Activity
+*   Hilt
+*   XML
+*   Livedata
+*   Error handle
+*   Data classes
+*   UI States
+*   Loading
+*   Clean code
+*   I changed the icon
+*   Mapper
+*   Layers
 
-I am sharing a short video with and without internet,
 thanks
