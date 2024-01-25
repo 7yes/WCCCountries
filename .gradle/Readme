@@ -1,0 +1,34 @@
+Hi this is the documentation I got
+
+
+1. Fetch a list of countries in JSON format from this URL:
+
+https://gist.githubusercontent.com/peymano-wmt/32dcb892b06648910ddd40406e37fdab/raw/db25946fd77c5873b0303b858e861ce724e0dcd0/countries.json
+
+2.
+
+The user is  able to scroll thru the entire list of countries.
+
+3. I was told
+    Do’s and don’t
+·       Use coroutines. I used Coroutines
+·       Do not use Compose, I used XML
+·       Do not use Dagger, I used Hilt
+
+MVVM
+Coroutines
+Activity
+Hilt
+XLM
+Livedata
+error handle
+data clases
+UI States
+loading
+clean code
+I changed the icon
+mapper
+layers
+
+I am sharing a short video with and without internet,
+thanks
