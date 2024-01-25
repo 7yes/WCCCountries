@@ -17,7 +17,7 @@ class CountryService @Inject constructor(private val api:CountryApi){
         var answer = emptyList<CountryResponseItem>()
         try {
             val response = api.getAll()
-            Log.d("TAJ", "No Internet ")
+            Log.d("TAJ", "inside ")
             val body = response.body()
             if (body != null) {
                 answer = body
@@ -31,6 +31,7 @@ class CountryService @Inject constructor(private val api:CountryApi){
                 Log.d("TAJ", "unexpected error  ${e.message}")
             }
         }
+        Log.d("TAJ", "call answer $answer ")
         return answer
     }
 
