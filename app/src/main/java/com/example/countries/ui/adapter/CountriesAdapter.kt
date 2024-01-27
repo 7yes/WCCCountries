@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.countries.R
 import com.example.countries.domain.model.CountryItem
 
-class CountriesAdapter(private var countryList: List<CountryItem>) :
+class CountriesAdapter(private var countryList: List<CountryItem>, private val onCLickLis:(CountryItem)->Unit) :
     RecyclerView.Adapter<CountriesViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CountriesViewHolder {
@@ -18,6 +18,6 @@ class CountriesAdapter(private var countryList: List<CountryItem>) :
 
     override fun onBindViewHolder(holder: CountriesViewHolder, position: Int) {
         val item = countryList[position]
-        holder.bind(item)
+        holder.bind(item, onCLickLis)
     }
 }
