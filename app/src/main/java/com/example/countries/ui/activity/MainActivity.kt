@@ -30,6 +30,10 @@ class MainActivity : AppCompatActivity() {
         viewmodel.getAll()
         initRV()
         configSwipe()
+        binding.btnAdd.setOnClickListener {
+            myCountryList.add(3,CountryItem("My Capital","Code","s","Name","reg"))
+            adapter.notifyItemInserted(3)
+        }
         viewmodel.state.observe(this) { state ->
             when (state) {
                 is ResultState.ERROR -> {
