@@ -1,6 +1,8 @@
 package com.example.countries.ui.activity
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -27,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         viewmodel.getAll()
         initRV()
-
+        configSwipe()
         viewmodel.state.observe(this) { state ->
             when (state) {
                 is ResultState.ERROR -> {
@@ -53,9 +55,17 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun configSwipe() {
+        binding.swipe.setOnRefreshListener {
+            Handler(Looper.getMainLooper()).postDelayed({
+                binding.swipe.isRefreshing = false
+            }, 2000)
+        }
+    }
+
     private fun initRV() {
-        adapter = CountriesAdapter(myCountryList){
-            Toast.makeText(this,it.name,Toast.LENGTH_SHORT).show()
+        adapter = CountriesAdapter(myCountryList) {
+            Toast.makeText(this, it.name, Toast.LENGTH_SHORT).show()
         }
         binding.rvCountries.layoutManager = LinearLayoutManager(this)
         binding.rvCountries.adapter = adapter

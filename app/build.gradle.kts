@@ -51,6 +51,9 @@ dependencies {
     implementation("com.google.dagger:hilt-android:2.48")
     kapt("com.google.dagger:hilt-compiler:2.48")
 
+    //refresh Swipe
+    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
+
     //Retrofit
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
@@ -61,7 +64,6 @@ dependencies {
 
     //VIewmodel
     implementation("androidx.activity:activity-ktx:1.8.2")
-
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
