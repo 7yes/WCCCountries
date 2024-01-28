@@ -64,9 +64,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initRV() {
-        adapter = CountriesAdapter(myCountryList) {
-            Toast.makeText(this, it.name, Toast.LENGTH_SHORT).show()
-        }
+        adapter = CountriesAdapter(
+            myCountryList,
+            onCLickLis = { Toast.makeText(this, it.name, Toast.LENGTH_SHORT).show() },
+            onClickDele = {
+                myCountryList.removeAt(it)
+                adapter.notifyItemRemoved(it)
+            })
         binding.rvCountries.layoutManager = LinearLayoutManager(this)
         binding.rvCountries.adapter = adapter
     }
