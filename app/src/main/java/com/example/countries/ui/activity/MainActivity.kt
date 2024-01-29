@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private val viewmodel: CountryViewModel by viewModels()
     private lateinit var adapter: CountriesAdapter
-    private var myCountryList = mutableListOf<CountryItem>()
+    private var myCountryList = listOf<CountryItem>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,8 +31,11 @@ class MainActivity : AppCompatActivity() {
         initRV()
         configSwipe()
         binding.btnAdd.setOnClickListener {
-            myCountryList.add(3,CountryItem("My Capital","Code","s","Name","reg"))
-            adapter.notifyItemInserted(3)
+            myCountryList = myCountryList.plus(
+                CountryItem("My Capital", "Code", "s", "Name", "reg")
+            )
+            adapter.updateList(myCountryList)
+            //adapter.notifyItemInserted(3)
         }
         viewmodel.state.observe(this) { state ->
             when (state) {
@@ -51,9 +54,11 @@ class MainActivity : AppCompatActivity() {
                 is ResultState.SUCCESS -> {
                     Log.d("TAJ", "error clase Sucess")
                     binding.progressCircular.isVisible = false
-                    myCountryList.clear()
-                    myCountryList.addAll(state.results)
-                    adapter.notifyDataSetChanged()
+                    //myCountryList.clear()
+                    myCountryList = state.results
+                    adapter.updateList(myCountryList)
+                    //myCountryList.addAll(state.results)
+                    //adapter.notifyDataSetChanged()
                 }
             }
         }
@@ -72,8 +77,10 @@ class MainActivity : AppCompatActivity() {
             myCountryList,
             onCLickLis = { Toast.makeText(this, it.name, Toast.LENGTH_SHORT).show() },
             onClickDele = {
-                myCountryList.removeAt(it)
-                adapter.notifyItemRemoved(it)
+                //myCountryList.removeAt(it)
+                //adapter.notifyItemRemoved(it)
+                myCountryList = myCountryList.minus(myCountryList[it])
+                adapter.updateList(myCountryList)
             })
         binding.rvCountries.layoutManager = LinearLayoutManager(this)
         binding.rvCountries.adapter = adapter
